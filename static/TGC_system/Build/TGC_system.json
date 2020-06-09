@@ -1,0 +1,17 @@
+{
+"companyName": "The golden Capital",
+"productName": "TGC",
+"productVersion": "0.1",
+"dataUrl": "TGC_system.data.unityweb",
+"wasmCodeUrl": "TGC_system.wasm.code.unityweb",
+"wasmFrameworkUrl": "TGC_system.wasm.framework.unityweb",
+"graphicsAPI": ["WebGL 2.0","WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"backgroundUrl": "TGC_system.jpg",
+"splashScreenStyle": "Dark",
+"backgroundColor": "#FFFFFF",
+"cacheControl": {"default": "must-revalidate"},
+"developmentBuild": false,
+"multithreading": false,
+"unityVersion": "2019.2.7f2"
+}
