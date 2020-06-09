@@ -1,0 +1,23 @@
+<div class="card-body">
+{% for tag, values in player_stats.items %}
+    <div class="card-title">
+        <p>{{tag}}</p>
+    </div>
+    <div >
+        <table style="width: 100%; ">
+        <tr style="color:#fd7e14; !important;"><th align ="left">Ник</th><th>Поб.</th><th>Пор.</th><th>Все</th></tr>
+        {% for nick,stats in values.items %}
+            <tr>
+                <td >
+                    <span id="{{ forloop.parentloop.counter }}{{forloop.counter}}">{{nick}}</span>
+                </td>
+                <td>{{stats.0}}</td>
+                <td>{{stats.1}}</td>
+                <td>{{stats.2}}</td>
+            </tr>
+            <script type="text/javascript">showUser("{{forloop.parentloop.counter}}{{forloop.counter}}", {login: "{{nick}}", prepend: "<a href=\"https://www.mafiaonline.ru/info/{{ nick }}\" target='_blank'>", append: "</a>", mask: "{{nick}}"});</script>
+        {% endfor %}
+        </table>
+    </div>
+{% endfor %}
+</div>

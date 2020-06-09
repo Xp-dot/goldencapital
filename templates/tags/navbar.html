@@ -1,0 +1,37 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}">
+<script type="text/javascript" src="{% static 'js/navbar.js' %}"></script>
+
+<div class="navbar navbar-expand-md navbar-dark bg-dark mb-4" role="navigation">
+    <a class="navbar-brand" href="{% url 'landing' %}" > <img class="img-fluid" src="/media/ogon_1.png" ></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link text-warning" href="{% url 'landing' %}">Новости</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-warning" href="{% url 'history' %}">История</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-warning" href="{% url 'sostav' %}">Состав</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-warning" href="{% url 'ustav' %}">Устав</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-warning" href="{% url 'tutorial' %}">Обучение</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-warning" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Калькуляторы</a>
+                <ul class="dropdown-menu bg-dark" aria-labelledby="dropdown1">
+                    <li class="dropdown-item"><a href="{% url 'calc' %}">Калькулятор сумрака</a></li>
+                    <li class="dropdown-item"><a href="{% url 'stats_calc'%}">Калькулятор статистики</a></li>
+                    <li class="dropdown-item"><a href="{% url 'log_calc'%}">Калькулятор логов</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>

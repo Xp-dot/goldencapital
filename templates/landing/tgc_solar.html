@@ -1,0 +1,25 @@
+{% load static %}
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>TGC Solar System</title>
+    <link rel="shortcut icon" href="{% static 'TGC_system/TemplateData/favicon.ico' %}">
+    <link rel="stylesheet" href="{% static 'TGC_system/TemplateData/style.css' %}">
+    <script type="text/javascript" src="{% static 'TGC_system/TemplateData/UnityProgress.js' %}"></script>
+    <script type="text/javascript" src="{% static 'TGC_system/Build/UnityLoader.js' %}"></script>
+    <script>
+      var unityInstance = UnityLoader.instantiate("unityContainer", "{% static 'TGC_system/Build/TGC_system.json' %}", {onProgress: UnityProgress});
+    </script>
+  </head>
+  <body>
+    <div class="webgl-content">
+      <div id="unityContainer" style="width: 1280px; height: 720px"></div>
+      <div class="footer">
+        <div class="webgl-logo"></div>
+        <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
+        <div class="title">TGC</div>
+      </div>
+    </div>
+  </body>
+</html>

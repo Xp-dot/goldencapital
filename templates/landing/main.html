@@ -1,0 +1,74 @@
+{% extends 'landing/base.html' %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/paginator.css' %}">
+{% block title %}
+    Новости
+{% endblock %}
+
+{% block news %}
+
+{% endblock %}
+
+{% block pagination %}
+    {% if articles.has_other_pages %}
+        <div class="row justify-content-center" style="margin-top:20px;">
+            <nav aria-label="...">
+              <ul class="pagination">
+                {% if articles.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link text-warning bg-dark" href="?page=1" tabindex="-1">Первая</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link text-warning bg-dark" href="?page={{ articles.previous_page_number }}" tabindex="-1">Пред.</a>
+                    </li>
+                {% endif %}
+                {% for num in articles.paginator.page_range %}
+
+                    {% if articles.number == num %}
+                        <li class="page-item active">
+                            <a class="page-link text-dark bg-warning" href="?page={{ num }}">{{ num }} <span class="sr-only">{{ num }}</span></a>
+                        </li>
+                    {% elif num > articles.number|add:'-2' and num < articles.number|add:'2' %}
+                        <li class="page-item text-warning bg-dark"><a class="page-link text-warning bg-dark" href="?page={{ num }}">{{ num }}</a></li>
+                    {% endif %}
+
+                {% endfor %}
+                {% if articles.has_next %}
+                    <li class="page-item">
+                        <a class="page-link text-warning bg-dark" href="?page={{articles.next_page_number}}">След.</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link text-warning bg-dark" href="?page={{articles.paginator.num_pages}}">Последняя</a>
+                    </li>
+                {% endif %}
+              </ul>
+            </nav>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    {% for article in articles %}
+        <div class="card border-warning bg-dark m-3" >
+          <div class="row no-gutters">
+            <div class="col-md-4 align-self-center">
+                <a href="{% url 'article' article.id %}">
+                    <img src="{{ article.image.url }}" class="card-img" alt="{{ article.title }}">
+                </a>
+                <div class="card-text">
+                      <small class="text-warning">Опубликовано {{article.post_date|date:"SHORT_DATE_FORMAT"}}</small>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h3 class="card-title"><a href="{% url 'article' article.id %}">{{article.title}} </a></h3>
+                    <p class="card-text text-justify">{{ article.get_short_text|urlize }}</p>
+                    <a href="{% url 'article' article.id %}" class="btn btn-outline-warning pull-right mb-2">Читать дальше »</a>
+                </div>
+
+            </div>
+          </div>
+
+        </div>
+    {% endfor %}
+{% endblock %}

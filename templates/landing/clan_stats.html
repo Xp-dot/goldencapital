@@ -1,0 +1,52 @@
+{% extends 'landing/base.html' %}
+<script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+<style>
+    zing-grid[loading] {
+        height: 350px;
+    }
+    .chart--container {
+            height: 100%;
+            width: 100%;
+            min-height: 250px;
+        }
+</style>
+{% block title %}
+    Обучение
+{% endblock %}
+
+
+
+{% block content %}
+<div id='mafstat_chart' class="chart--container"></div>
+<script>
+        ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "b55b025e438fa8a98e32482b5f768ff5"];
+        var mafstat_config =
+        {
+            "type": "pie3d",
+            backgroundColor: 'none',
+            "scale": {"size-factor": 0.95},
+            title: {text: "За последние 30 дней", color :'#F5D18E'},
+            legend: {layout:"10x2", verticalAlign: 'bottom'
+            },
+            "plot":{"border-width":1,"border-color":"#000", "value-box":{"font-size":10, "font-weight":"normal",type: "none",
+                    "placement":"in", align: 'top',}},
+
+            "series":
+                [
+                    {% for player,stats in player_stats.items %}
+                        {"text":"{{ player }}", "values":
+                                {% for tag, stat_item in stats.items  %}
+                                    {% if tag == 'total' %}
+                                        [{{ stat_item|first }}],
+                                    {% endif %}
+                                {% endfor %}
+                        },
+                    {% endfor %}
+                ]
+
+        };
+
+        zingchart.render({id: 'mafstat_chart', data: mafstat_config, height: 750, width: "100%"
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,175 @@
+/* font-size - размер шрифта, line-height - межстрочный интервал, font-family - стиль шрифта */
+.tooltip.in{opacity:1!important;}
+.tooltip.show {
+    opacity: 1;
+}
+body
+{
+	font-size: 3vmin;
+    line-height: 1.1 !important;
+    font-family: adobe-caslon-w01-smbd, serif !important;
+}
+
+body {
+    text-align:center;
+    overflow-x: hidden;
+    color:#F5D18E;
+    margin-bottom: 35px;
+    background: #2e323b url('/media/tgc_background.png');
+    webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat:no-repeat;
+    background-position:center center;
+    background-attachment: fixed;
+    background-color: #464646;
+    object-position:50% 50%;
+    height: 100vh;
+    width: 100vw;
+}
+body.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom { margin-right: 0; }
+
+button{font-family:forum,serif;}
+
+h1 {font-size: 5.9vw;}
+h2 {font-size: 5vmin; font-weight: bold; font-family: adobe-caslon-w01-smbd, serif !important;}
+h3 {font-size: 3.5vmin;}
+a:hover, a:visited, a:link, a:active {text-decoration: none;color: #fd7e14;}
+
+/*------- Bootstrap overwrited --------*/
+.bg-dark
+{
+background-color: rgba(10,10,10,0.85) !important;
+}
+.list-group-item-dark
+{
+background-color: rgba(10,10,10,0.85) !important;
+}
+
+.list-group-item-dark.list-group-item-action:hover, .navbar .dropdown-item:hover, .navbar .dropdown-item:hover a{
+    color: rgba(10,10,10,0.85) !important;
+    background-color: #fd7e14 !important;
+}
+.list-group-item-dark.list-group-item-action:active,
+.list-group-item-dark.list-group-item-action:focus,
+.navbar .dropdown-item:active,
+.navbar .dropdown-item:focus,
+.navbar .dropdown-item:active a,
+.navbar .dropdown-item:focus a{
+    background-color: rgba(10,10,10,0.85) !important;
+    color: #fd7e14 !important;
+}
+.text-warning
+{
+color: #fd7e14 !important;
+}
+a.text-warning:hover {
+    color: #F5D18E !important;
+}
+
+/*------- Article decoration --------*/
+.article_post {
+    display: inline-block;
+    max-width:250px;
+    max-height:650px;
+    margin-bottom: 35px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+#article-page-container{
+    margin-left: 2vw;
+    text-align: left;
+    white-space: pre-wrap;
+}
+.article_p {
+    text-align: justify;
+    font-size: 0.8em !important;
+}
+/*------- Content text decoration --------*/
+.capital_letter, .content_field::first-letter {
+    font-family: Impact, Charcoal, sans-serif !important;
+    -webkit-text-stroke-width: 0.5px !important;
+    -webkit-text-stroke-color: orangered !important;
+    font-weight: bold !important; font-family: adobe-caslon-w01-smbd, serif !important;
+    font-size:4vmin !important;
+    color:#F5D18E !important;
+    }
+/*------- Images --------*/
+.img-thumbnail {
+    border: 0;
+    background: #F5D18E;
+    box-shadow: 0px 4.6666666667px 24px 3px #F5D18E;
+}
+
+/*-------- Table decoration --------*/
+th {
+    border-bottom: 1px solid #6678b1;
+    color: #fd7e14;
+    padding: 6px 2px;
+    font-size: 0.8em;
+    text-align:left;
+}
+tr {
+    font-size: 0.9em;
+}
+td {
+    vertical-align: bottom;
+    color: #F5D18E;
+    padding: 6px 2px;
+    font-size: 0.8em;
+    text-align:left;
+}
+
+/* never ask me why i did this....*/
+@media all and (min-width:1024px) {
+
+.content_field{
+    margin-bottom:1vw;
+    border-radius: 10px;
+    text-align: justify;
+}
+.footer-ico{
+    font-size: 50px;
+    color: silver;
+}
+.tgc_header {
+    margin-left:5vw;
+    margin-right:5vw;
+    margin-bottom:1vw;
+    border-radius: 10px;
+}
+.fucking_hand {
+        border-radius: 10px;
+    }
+}
+@media all and (max-width:1024px)
+{
+    .capital_letter, .content_field::first-letter{font-size: 5.6vmin}
+	.fucking_hand {
+        border-radius: 10px;
+    }
+}
+@media all and (min-width:750px) and (max-width:1024px) {
+
+    .fucking_hand {
+        min-width: 20vw;
+        min-height: 30vw;
+        border-radius: 10px;
+    }
+}
+@media all and (min-width:400px) and (max-width:750px) {
+    .fucking_hand {
+        min-width: 20vw;
+        min-height: 20vw;
+        border-radius: 10px;
+    }
+
+}
+@media all and (max-width:400px) {
+    .fucking_hand {
+        min-width: 40vw;
+        min-height: 30vw;
+        border-radius: 10px;
+    }
+}

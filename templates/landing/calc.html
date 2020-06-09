@@ -1,0 +1,95 @@
+{% extends 'landing/base_calc.html' %}
+{% load static %}
+{% block scripts %}
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="{% static 'css/calc.css' %}">{% endblock %}
+{% block title %}
+    Калькулятор Сумрака
+{% endblock %}
+
+
+{% block content %}
+<div class="container bg-dark" >
+    <script type="text/javascript" src="{% static 'js/calc.js' %}"></script>
+    <form name="calc" id="calc" action="javascript:reCalc(this.form);">
+        <div class="row justify-content-center">
+            <table class="table table-sm" id="calctable1">
+            <thead>
+
+            <tr>
+            <th rowspan="2" colspan="1">&nbsp;</th>
+            <th colspan="2">Статы</th>
+            <th rowspan="2"><span style="font-size: 12pt;">Сила ударов</span></th>
+            </tr>
+            <tr>
+            <th>Ваши</th>
+
+            <th>Соперника</th>
+            </tr>
+            </thead>
+            <tbody style="text-align: center;">
+            <tr>
+
+            <td>Социальный статус</td>
+
+            <td class="dealed_dmg""><input name="soc1" id="soc1" size="3" maxlength="3" type="text"></td>
+            <td class="received_dmg"><input name="soc2" id="soc2" size="3" maxlength="3" type="text"></td>
+            <td class="dealed_dmg""><input name="ud12" id="ud12" size="2" maxlength="2" disabled="disabled" style="font-weight: bold;" type="text"></td>
+            </tr>
+            <tr>
+            <td>Иммунитет</td>
+            <td class="received_dmg"><input name="imm1" id="imm1" size="3" maxlength="3" type="text"></td>
+            <td class="dealed_dmg""><input name="imm2" id="imm2" size="3" maxlength="3" type="text"></td>
+
+            <td class="received_dmg"><input name="ud21" id="ud21" size="2" maxlength="2" disabled="disabled" style="font-weight: bold;" type="text"></td>
+            </tr>
+            <tr>
+
+            <td>Нападение</td>
+            <td class="dealed_dmg"><input name="nap1" id="nap1" size="3" maxlength="3" type="text"></td>
+            <td class="received_dmg"><input name="nap2" id="nap2" size="3" maxlength="3" type="text"></td>
+
+            <td class="dealed_dmg""><input name="un12" id="un12" size="2" maxlength="2" disabled="disabled" style="font-weight: bold;" type="text"></td>
+            </tr>
+            <tr>
+            <td>Защита</td>
+            <td class="received_dmg"><input name="zasch1" id="zasch1" size="3" maxlength="3" type="text"></td>
+            <td class="dealed_dmg""><input name="zasch2" id="zasch2" size="3" maxlength="3" type="text"></td>
+            <td class="received_dmg"><input name="un21" id="un21" size="2" maxlength="2" disabled="disabled" style="font-weight: bold;" type="text"></td>
+            </tr>
+
+            </tbody>
+            </table>
+        </div>
+        <div class="row justify-content-center">
+            <input class="btn btn-outline-warning" value="Очистить" type="reset"> &nbsp;
+            <input class="btn btn-outline-warning" value="Пересчитать" onclick="reCalc(this.form); " type="button">
+            <label for="rage" style="border: 0pt none; display: inline; margin-left: 10px">Бешенство</label> <input class="text-warning bg-dark" name="rage" id="rage" type="checkbox">
+        </div>
+        <div class="row justify-content-center">
+            <table style="width: 60%;" class="cal c">
+
+
+        <thead>
+        <tr>
+        <th>Цвет</th>
+        <th>Значение</th>
+        </tr>
+
+        </thead>
+        <tbody>
+        <tr>
+        <td class="dealed_dmg">&nbsp;</td>
+        <td>Значения, используемые для расчёта урона, наносимого Вами сопернику</td>
+        </tr>
+        <tr>
+        <td class="received_dmg">&nbsp;</td>
+
+        <td>Значения, используемые для расчёта урона, наносимого Вам соперником</td>
+        </tr>
+        </tbody>
+        </table>
+        </div>
+    </form>
+    </div>
+{% endblock %}

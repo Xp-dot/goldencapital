@@ -1,0 +1,18 @@
+{% extends 'landing/base.html' %}
+{% block title %}
+    Обучение
+{% endblock %}
+
+{% block content %}
+
+<iframe src="{{pdf_location}}" style="width: 100%;height: 700px;" frameborder="0"></iframe>
+{% comment %}
+<object width="700" height="500" type="application/pdf" data="http://example.com/the.pdf">
+    <embed src="http://example.com/the.pdf" type="application/pdf">
+        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="http://example.com/the.pdf">Download PDF</a>.</p>
+    </embed>
+</object>
+ <embed src='{{pdf_location}}' type="application/pdf" style="width:718px; height:700px;" frameborder="0"/>
+<iframe src="{{pdf_location}}" type="application/pdf" style="width: 100%;height: 100%;border: none;"></iframe>
+{% endcomment %}
+{% endblock %}

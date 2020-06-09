@@ -1,0 +1,12 @@
+{% extends 'landing/base.html' %}
+{% block title %}
+    {{ article.title }}
+{% endblock %}
+
+{% block content %}
+    <div id="article-page-container">
+        <div class="row justify-content-center"><img class="img-thumbnail" style="margin-left: 5vw; margin-right: 5vw" src="{{ article.image.url }}" alt="{{ article.title }}"></div>
+        <div class="row justify-content-center">{{ article.post_date }} by <a href="{{ article.user.first_name }}">{{ article.user }}</a></div>
+        <div class="row" >{{ article.text|safe|urlize }} </div>
+    </div>
+{% endblock %}

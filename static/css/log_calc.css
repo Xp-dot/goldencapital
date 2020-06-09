@@ -1,0 +1,85 @@
+.auto-width
+{
+    width:auto;
+ 	max-width:500px;
+ 	margin:5px 100px 5px 100px;
+}
+
+
+/* MOBILE CSS HERE*/
+@media (max-width: 768px) {
+#Container {
+	border-radius: 10px; 
+}
+ #myProgress {
+	background-color: #ddd;
+	display:block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 70%;
+	border-radius: 10px; 
+}
+
+#myBar {
+	width: 0%;
+	height: 30px;
+	background-color: #4CAF50;
+	text-align: center;
+	line-height: 30px;
+	color: black;
+	border-radius: 10px; 
+}
+#Stage {
+	display: block;
+	text-align:center;
+}
+#sortableTable
+	{
+		font-size: 4vmin;
+	}
+}
+
+/* PC CSS HERE*/
+@media (min-width: 769px) 
+{
+	#Container {
+		border-radius: 10px; 
+	}
+	 #myProgress {
+		background-color: #ddd;
+		display:block;
+		margin-left: auto;
+		margin-right: auto;
+		width: 70%;
+		border-radius: 10px; 
+	}
+
+	#myBar {
+		width: 0%;
+		height: 30px;
+		background-color: #4CAF50;
+		text-align: center;
+		line-height: 30px;
+		color: black;
+		border-radius: 10px; 
+	}
+	#Stage {
+		display: block;
+		text-align:center;
+		margin: auto;
+		
+	}
+	#sortableTable
+	{
+		font-size: 3vmin;
+	}
+	#sortableTable_info
+	{
+		font-size: 2vmin;
+	}
+} 
+thead input 
+{
+	width: 100%;
+}
+

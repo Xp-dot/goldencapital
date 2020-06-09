@@ -1,0 +1,20 @@
+/*
+font-size: тут пишешь число + единицы измерения.
+Единицы измерения : cm, mm, in, px, pt, pc, em, em, ch, rem, vw, vh, vmin, vmax, %.
+px - пиксели.
+Подробнее об единицах измерения тут :
+https://www.w3schools.com/cssref/css_units.asp
+*/
+
+
+/* Стиль для компа : */
+
+p.card-text { font-size: 18px; } /* Стиль для новостей по центру */
+div.list-group{ font-size: 18px; } /* Стиль для текста сбоку */
+
+/* Ниже стиль для мобилок */
+
+@media screen and (max-width: 500px) {
+p.card-text { font-size: 3vmin; } /* Стиль для новостей по центру */
+div.list-group{ font-size:3vmin; } /* Стиль для текста сбоку */
+}

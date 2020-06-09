@@ -1,0 +1,10 @@
+{% for topic_name, values in forum_stats.items %}
+    <div class="card bg-dark border-warning mx-auto mb-3 " style="width: 80%;">
+        <div class="card-header border-warning">{{topic_name}}</div>
+        <div class="list-group">
+            {% for post_name, post_link in values.items %}
+                <a class="list-group-item list-group-item-dark list-group-item-action" href="{{ post_link }}" target="_blank">{{post_name}}</a>
+            {% endfor %}
+        </div>
+    </div>
+{% endfor %}

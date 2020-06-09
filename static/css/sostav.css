@@ -1,0 +1,22 @@
+tr:nth-child(-n+2) {
+    color: green;
+}
+td
+{
+    color: #FAE1B1;
+    vertical-align: middle;
+}
+th {
+    color: #FAE1B1;
+    text-align: center !important;
+    vertical-align: middle;
+}
+
+
+.mow-members th { width: 60%;}
+.mow-online {color: #C40000 !important; }
+.mow-location {color: #C40000 !important; }
+.mow-offline {color: #FFD700 !important; }
+.mow-hidden {color: #FCD272 !important; }
+.mow-job {float:left; color: #FCD272;}
+.login img {border: 0}

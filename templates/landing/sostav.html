@@ -1,0 +1,22 @@
+{% extends 'landing/base.html' %}
+{% load static %}
+{% block scripts %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/sostav.css' %}">
+<script type="text/javascript">
+$(function() {
+  famMembers ('fm', {
+    'id': 25440,
+    'date': false,
+    'job': true,
+    'location' : true});
+});
+</script>
+{% endblock %}
+{% block title %}
+    Состав
+
+{% endblock %}
+
+{% block content %}
+<div  id="fm" class="bg-dark border-warning mx-auto mb-3" style="width: 80%; overflow:auto;"></div>
+{% endblock %}

@@ -1,0 +1,13 @@
+.content
+{ border-radius:2px; }
+td {color: #FAE1B1; border-radius:2px;
+  text-align: center;
+  vertical-align: middle;}
+th {
+  color: #FAE1B1;
+  border-radius:2px;
+  text-align: center !important;
+  vertical-align: middle;}
+
+.received_dmg{background-color: #FFB732;}
+.dealed_dmg{background-color: #FF5032;}
