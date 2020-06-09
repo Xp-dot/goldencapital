@@ -1,0 +1,4 @@
+/venv/
+/var/
+/landing/var/
+*.sqlite3
