@@ -13,5 +13,6 @@ urlpatterns = [
     path('log_viewer/', views.log_viewer, name="log_viewer"),
     path('stats_calc/', views.stats_calc, name="stats_calc"),
     path('log_calc/', views.log_calc, name="log_calc"),
+    path('gifts_calc/', views.gifts_calc, name="gifts_calc"),
     path('article/<article_id>', views.show_article, name='article'),
 ]

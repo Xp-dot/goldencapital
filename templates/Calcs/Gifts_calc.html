@@ -1,0 +1,87 @@
+{% extends 'Calcs/base_calc.html' %}
+{% load static %}
+<html>
+
+{% block title %}
+	Квадрогенератор v 2.0.
+	<meta charset="utf-8">
+	<meta http-equiv="expires" content="0">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/gifts_calc.css' %}">
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+	<script type="text/javascript" src="{% static 'js/gifts_calc/DragAndDrop.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/gifts_calc/DragDropTouch.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/gifts_calc/GenerateTable.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/gifts_calc/photos.js' %}"></script>
+{% endblock %}
+{% block content %}
+    <p align="center">Перетащите открытки так, как вам нравится</p>
+
+	<table align="center">
+	  <tr>
+		<td>
+			<div class="ImageContainer"  id="ImageContainer1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+		</td>
+		<td>
+			<div class="ImageContainer"  id="ImageContainer2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+		</td>
+		<td>
+			<div class="ImageContainer"  id="ImageContainer3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+		</td>
+	  </tr>
+	  <tr>
+		<td>
+			<div class="ImageContainer"  id="ImageContainer4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+		</td>
+		<td>
+			<div class="ImageContainer"  id="ImageContainer5" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+		</td>
+		<td>
+			<div class="ImageContainer"  id="ImageContainer6" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+		</td>
+	  </tr>
+	  <tr>
+		<td>
+			<div class="ImageContainer"  id="ImageContainer7" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+		</td>
+		<td>
+			<div class="ImageContainer"  id="ImageContainer8" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+		</td>
+		<td>
+			<div class="ImageContainer" id="ImageContainer9" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+		</td>
+	  </tr>
+	</table>
+
+    <br>	
+	<select class="form-control" data-style="btn-warning" name="Categories" onchange="loadImage(this.value)">
+	  <option value="Ot_Sluchaya_K_Sluchay">От случая к случаю</option>
+	  <option value="Pozdravitelnaya_Otrkritka">Поздравительные открытки</option>
+	  <option value="Svadba">Свааааадьба!</option>
+	  <option value="Flowers">Цветы</option>
+	  <option value="LevelUp">С уровнем, нубло!</option>
+	  <option value="Happy_Birthday">С днем рожденья!</option>
+	  <option value="FriendShip">Дружба</option>
+	  <option value="RolePlay">Ролевушки</option>
+	  <option value="Concurs">Конкурсы и игры</option>
+	  <option value="Raznoe">Разное(семейные)</option>
+	  <option value="Romantic">Романтик</option>
+	  <option value="Sweets">Сникерсы-сникерсы, баунти-баунти</option>
+	  <optgroup label="Времена года">
+		  <option value="Autumn">Осень</option>
+		  <option value="Spring">Весна</option>
+		  <option value="Winter">Зима</option>
+		  <option value="Summer">Лето</option>
+	  </optgroup>
+	  <optgroup label="Дорогие подарки">
+	  <option value="Byket">Букеты</option>
+	  <option value="Gift_Sets">Подарочные наборы</option>
+	  <option value="Jewelry">Ювелирка</option>
+	  <option value="Misc">Разное</option>
+	  <option value="Toys">Игрушки</option>
+	  </optgroup>
+	</select>
+	<table id="ScrollTable"  align="center">
+	  <tbody id="fcuk">
+	  </tbody>
+	</table>
+{% endblock %}

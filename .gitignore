@@ -2,3 +2,4 @@
 /var/
 /landing/var/
 *.sqlite3
+/static/cache/

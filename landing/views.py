@@ -48,11 +48,13 @@ def tutorial(request):
 
 
 def calc(request):
-    return render(request, "landing/calc.html", locals())
+    return render(request, "Calcs/calc.html", locals())
 
 def stats_calc(request):
-    return render(request, "landing/stats_calc.html", locals())
+    return render(request, "Calcs/stats_calc.html", locals())
 
 def log_calc(request):
-    return render(request, "landing/log_calc.html", locals())
+    return render(request, "Calcs/log_calc.html", locals())
 
+def gifts_calc(request):
+    return render(request, "Calcs/gifts_calc.html", locals())
