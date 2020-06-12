@@ -3,3 +3,5 @@
 /landing/var/
 *.sqlite3
 /static/cache/
+/landing/migrations/
+/tgc_solar_users/migrations/
