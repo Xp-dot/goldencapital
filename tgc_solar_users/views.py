@@ -41,6 +41,9 @@ def profile_load(request):
                 if post_data_type not in data_type.keys():
                     return render(request, 'users/tgc_response_page.html', {'response_string':'no such type'})
                 setattr(usr_obj, data_type[post_data_type], data)
+                print(usr_obj)
+                print(data_type[post_data_type])
+                print(data)
                 usr_obj.save()
                 return render(request, 'users/tgc_response_page.html', {'response_string':'save success'})
             else:
