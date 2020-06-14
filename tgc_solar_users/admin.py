@@ -8,8 +8,8 @@ from django.utils.safestring import mark_safe
 # Register your models here.
 
 class UserProfileAdmin(admin.ModelAdmin):
-    list_display=('user', 'team_name', 'team_users', 'player_data', 'items_data',  'log_data',  'quests_data')
-    search_fields = ['user__username', 'team_name', 'player_data', 'team_users', 'items_data', 'log_data',  'quests_data']
+    list_display=('user', 'team_name', 'team_users', 'player_data', 'log_data',  'quests_data')
+    search_fields = ['user__username', 'team_name', 'player_data', 'team_users', 'log_data',  'quests_data']
 
 admin.site.register(UserProfile,UserProfileAdmin)
 
