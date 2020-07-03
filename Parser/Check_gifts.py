@@ -1,5 +1,6 @@
 import requests
 import json
+import parser
 import parser_urls
 import os
 
@@ -31,7 +32,7 @@ def write_to_file(json_file, path):
         json.dump(json_file, f, indent=4, separators=(',', ': '), ensure_ascii=False)
 
 def load_json_from_ulr(url):
-    r = requests.get(url)
+    r = parser.get_url(url)
     return r.json()
 
 def check_update():
