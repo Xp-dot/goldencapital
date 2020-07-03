@@ -1,4 +1,3 @@
-import requests
 import json
 import parser
 import parser_urls
@@ -11,7 +10,7 @@ json_categories_load_url = 'https://www.mafiaonline.ru/api/api.php?action=gifts&
 
 def save_image(base_url, path, filename, file_extention):
     url = base_url + filename + file_extention
-    r = requests.get(url)
+    r = parser.get_url(url)
     if r.status_code == 200:
         print('Картинка загружена, сохраняем... ')
         if not os.path.exists(path):
