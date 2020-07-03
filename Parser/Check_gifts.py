@@ -5,6 +5,7 @@ import os
 
 base_image_url = 'https://st.mafiaonline.ru/images/gifts/'
 json_load_url = 'https://www.mafiaonline.ru/api/api.php?action=gifts&param=gifts'
+json_categories_load_url = 'https://www.mafiaonline.ru/api/api.php?action=gifts&param=sections'
 
 
 def save_image(base_url, path, filename, file_extention):
@@ -34,6 +35,7 @@ def load_json_from_ulr(url):
     return r.json()
 
 def check_update():
+    print('---------- Проверяем наличие новых подарков. ---------------')
     json_cached = read_all_gifts(parser_urls.GIFTS_ALL_JSON)
     json_loaded = load_json_from_ulr(json_load_url)
     num_cached = len(json_cached['gifts'])
@@ -56,6 +58,13 @@ def check_update():
         print('Загруженный json сохранен!')
     else:
         print('Новых картинок нет!')
+    print('---------- Проверка наличия новых подарков окончена. ---------------')
+
+def load_categories():
+    print('---------- Обновляем категории. ---------------')
+    json_loaded = load_json_from_ulr(json_categories_load_url)
+    write_to_file(json_loaded, parser_urls.GIFTS_CATEGORIES_JSON)
+    print('---------- Обновление категорий завершено. ---------------')
 
 def load_all_images():
     json_cached = read_all_gifts(parser_urls.GIFTS_ALL_JSON)
@@ -70,6 +79,5 @@ def load_all_images():
         save_image(base_image_url, save_path, img_name, filetype)
     print('Сохранение прошло успешно.')
 
-load_all_images()
-
-#check_update()
+check_update()
+load_categories()

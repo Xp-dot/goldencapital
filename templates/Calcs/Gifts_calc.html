@@ -10,78 +10,122 @@
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 	<script type="text/javascript" src="{% static 'js/gifts_calc/DragAndDrop.js' %}"></script>
 	<script type="text/javascript" src="{% static 'js/gifts_calc/DragDropTouch.js' %}"></script>
-	<script type="text/javascript" src="{% static 'js/gifts_calc/GenerateTable.js' %}"></script>
-	<script type="text/javascript" src="{% static 'js/gifts_calc/photos.js' %}"></script>
 {% endblock %}
 {% block content %}
     <p align="center">Перетащите открытки так, как вам нравится</p>
+	<div class="row">
+		<div class="col">
+			<h1 class="capital_letter"> Порядок подарков :</h1>
+			<table id="gift_order_table" align="center">
+				{% for i in '123'|make_list%}
+				{% for j in '123'|make_list%}
+				<tr>
+					<td id="gift_name_{{i}}_{{j}}">
+						{{i}},{{j}}
+					</td>
+				</tr>
+				<tr><td style="color:red;">----</td></tr>
+				{% endfor %}
+				{% endfor %}
+			</table>
+		</div>
+		<div class="col">
+		<table align="center">
+			{% for i in '123'|make_list%}
+			<tr>
+				{% for j in '123'|make_list%}
+				<td>
+					<div class="ImageContainer"  id="ImageContainer_{{i}}_{{j}}" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+					<input type="hidden" id="price_{{i}}_{{j}}" price="" />
+					<input type="hidden" id="name_{{i}}_{{j}}" name="" />
+				</td>
+				{% endfor %}
+			</tr>
+			{% endfor %}
+		</table>
+		</div>
+		<div class="col">
+			<h1 class="capital_letter"> Суммарная стоимость квадрата :</h1>
+			<p id="total_price"> 0 маф.</p>
+		</div>
 
-	<table align="center">
-	  <tr>
-		<td>
-			<div class="ImageContainer"  id="ImageContainer1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-		</td>
-		<td>
-			<div class="ImageContainer"  id="ImageContainer2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-		</td>
-		<td>
-			<div class="ImageContainer"  id="ImageContainer3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-		</td>
-	  </tr>
-	  <tr>
-		<td>
-			<div class="ImageContainer"  id="ImageContainer4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-		</td>
-		<td>
-			<div class="ImageContainer"  id="ImageContainer5" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-		</td>
-		<td>
-			<div class="ImageContainer"  id="ImageContainer6" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-		</td>
-	  </tr>
-	  <tr>
-		<td>
-			<div class="ImageContainer"  id="ImageContainer7" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-		</td>
-		<td>
-			<div class="ImageContainer"  id="ImageContainer8" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-		</td>
-		<td>
-			<div class="ImageContainer" id="ImageContainer9" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-		</td>
-	  </tr>
-	</table>
+	</div>
 
-    <br>	
-	<select class="form-control" data-style="btn-warning" name="Categories" onchange="loadImage(this.value)">
-	  <option value="Ot_Sluchaya_K_Sluchay">От случая к случаю</option>
-	  <option value="Pozdravitelnaya_Otrkritka">Поздравительные открытки</option>
-	  <option value="Svadba">Свааааадьба!</option>
-	  <option value="Flowers">Цветы</option>
-	  <option value="LevelUp">С уровнем, нубло!</option>
-	  <option value="Happy_Birthday">С днем рожденья!</option>
-	  <option value="FriendShip">Дружба</option>
-	  <option value="RolePlay">Ролевушки</option>
-	  <option value="Concurs">Конкурсы и игры</option>
-	  <option value="Raznoe">Разное(семейные)</option>
-	  <option value="Romantic">Романтик</option>
-	  <option value="Sweets">Сникерсы-сникерсы, баунти-баунти</option>
-	  <optgroup label="Времена года">
-		  <option value="Autumn">Осень</option>
-		  <option value="Spring">Весна</option>
-		  <option value="Winter">Зима</option>
-		  <option value="Summer">Лето</option>
-	  </optgroup>
-	  <optgroup label="Дорогие подарки">
-	  <option value="Byket">Букеты</option>
-	  <option value="Gift_Sets">Подарочные наборы</option>
-	  <option value="Jewelry">Ювелирка</option>
-	  <option value="Misc">Разное</option>
-	  <option value="Toys">Игрушки</option>
-	  </optgroup>
-	</select>
-	<table id="ScrollTable"  align="center">
-	  <tbody id="fcuk">
-	  </tbody>
-	</table>
+    <br>
+	<!--<form method="POST">
+		{%csrf_token%}-->
+		<select class="form-control" data-style="btn-warning" name="Categories" >
+		{% for key, value in categories.items %}
+			{% if value.childs %}
+				<optgroup label="{{ value.name }}">
+					{% for key, val in value.childs.items %}
+					{%if key == select_val %}
+						<option value="{{ key }}"  selected >{{ val }}</option>
+					{% else %}
+						<option value="{{ key }}">{{ val }}</option>
+					{%endif%}
+					{% endfor %}
+				</optgroup>
+			{% else %}
+				{%if key == select_val %}
+					<option value="{{ key }}"  selected>{{ value.name  }}</option>
+				{% else %}
+					<option value="{{ key }}">{{ value.name  }}</option>
+				{%endif%}
+			{% endif %}
+		{% endfor %}
+		</select>
+	<!-- </form> -->
+		<table id="ScrollTable" align="center">
+			<tbody id="fcuk">
+				<tr>
+				  {% for id, params in photos.items %}
+					<td>
+						<div class="card bg-dark border-warning" style="max-width: 200px;">
+							<img class="imgList" src="{{params.url}}" id="drag{{forloop.counter}}" draggable="true" ondragstart="drag(event)">
+							<div class="card-body">
+								<p id="drag{{forloop.counter}}_name" name="{{ params.name}}"> {{ params.name}}</p>
+								<p id="drag{{forloop.counter}}_price" price="{{ params.price}}"> Цена : {{ params.price}} маф.</p>
+							</div>
+						</div>
+					</td>
+					{% endfor %}
+				</tr>
+			</tbody>
+		</table>
+<script type="text/javascript">
+    localStorageSupported = ('localStorage' in window && window['localStorage'] !== null);
+    if (localStorageSupported)
+	{
+        scrollvar = 'scrollPosition_tgc';
+        $window = $(window);
+		$(window).scrollTop(localStorage[scrollvar]);
+		$(window).on('load', function ()
+		{
+			$(window).scrollTop(localStorage[scrollvar]);
+        });
+        $(window).on("scroll", function ()
+		{
+            localStorage[scrollvar] = $(window).scrollTop();
+		});
+    }
+</script>
+<script>
+	$('.form-control').on('change', function()
+    {
+		var a = $('.form-control').val();
+		console.log(a);
+		$.ajax({
+					method: "GET",
+					url: "{% url 'gifts_calc' %}",
+					data: { Categories : a},
+					success: function(data, status)
+						{
+							console.log("SUCCESS:");
+							console.log(data);
+							$("#ScrollTable").replaceWith($("#ScrollTable", data));
+						}
+		});
+});
+</script>
 {% endblock %}

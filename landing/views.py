@@ -2,12 +2,12 @@ from django.shortcuts import render, get_object_or_404
 from .models import Article
 from django.views.decorators.cache import cache_page
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from Parser import Gifts_html_builder
 
 #utils.clear_cache()
 
-# Create your views here.
+
 def landing(request):
-    #articles = Article.objects.all()[::-1]
     articles = Article.objects.all().order_by('-post_date')
     paginator = Paginator(articles, 12)
     page = request.GET.get('page')
@@ -19,7 +19,6 @@ def landing(request):
         articles = paginator.page(paginator.num_pages)
     context = {'articles': articles}
     return render(request, "landing/main.html", context)
-
 
 def show_article(request, article_id):
     article = get_object_or_404(Article, id=article_id)
@@ -57,4 +56,14 @@ def log_calc(request):
     return render(request, "Calcs/log_calc.html", locals())
 
 def gifts_calc(request):
-    return render(request, "Calcs/gifts_calc.html", locals())
+    categories = Gifts_html_builder.get_all_sections_list()
+    photos = {}
+    selected_item = None
+    if 'Categories' in request.GET:
+        print('Categories in get request with id : ' + request.GET.get('Categories'))
+        selected_item = int(request.GET.get('Categories'))
+    '''if request.method == 'POST':'''
+    #selected_item = int(request.POST.get('Categories'))
+    if selected_item:
+        photos = Gifts_html_builder.get_all_photos_by_category_id(selected_item)
+    return render(request, "Calcs/Gifts_calc.html", {'categories' : categories, 'photos' : photos, 'select_val' : selected_item})

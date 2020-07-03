@@ -21,3 +21,4 @@ GIFTS_ALL_JSON = STATICFILES_DIRS[0] + '/json/gifts_all.json'
 GIFTS_CATEGORIES_JSON = STATICFILES_DIRS[0] + '/json/gifts_categories.json'
 
 GIFTS_IMAGE_LOCATION = MEDIAFILES_DIRS[0] + '/Gift_Images/'
+GIFTS_IMAGE_LOCATION_SHORT = '/media/Gift_Images/'
