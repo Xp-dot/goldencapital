@@ -1,7 +1,7 @@
 import json
-import parser
-import parser_urls
+from Parser import parser
 import os
+from Parser import parser_urls
 
 base_image_url = 'https://st.mafiaonline.ru/images/gifts/'
 json_load_url = 'https://www.mafiaonline.ru/api/api.php?action=gifts&param=gifts'
