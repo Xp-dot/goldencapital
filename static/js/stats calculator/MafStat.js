@@ -1,6 +1,7 @@
 var PlayerStatsArray = [];
 var PlayerName = "Desipere in loco";
 var dateInput;
+var isCountConstr = false;
 
 
 async function get_logs_from_list(){
@@ -67,19 +68,21 @@ async function ProcessLogList(url, date){
 
 //Function pushes all log details to array, if this log contain playerNickname.
 async function ProcessLogId(id, date){
-	var url = "https://www.mafiaonline.ru/api/api.php?action=log&param=info&id="+id;
+	var url = "https://www.mafiaonline.ru/api/api.php?action=log&param=log&id="+id;
 	let data = await (await fetch(url)).json();
-    var ul = data.loginfo.ul;
-    var result = data.loginfo.result;
-    var playersCount = Object.keys(data.loginfo.players).length;
+    var ul = data.log.ul;
+    var result = data.log.result;
+    var playersCount = Object.keys(data.log.players).length;
     for(var i =0; i< playersCount; i++)
     {
         if(ul != "ul1" && ul != "ul2" && ul != "ul3" && ul != "ul4")
             continue;
-        if(isStringEqual(data.loginfo.players[i].nick,PlayerName))
+        if(!isCountConstr && data.log.constructor)
+            continue;
+        if(isStringEqual(data.log.players[i].nick,PlayerName))
         {
-            var role = data.loginfo.players[i].role;
-            var status = data.loginfo.players[i].state;
+            var role = data.log.players[i].role;
+            var status = data.log.players[i].state;
             var win = isWin(role,result);
             var gameStat = [ul,result,role,status,win,id,date,playersCount];
             PlayerStatsArray.push(gameStat);
@@ -111,6 +114,12 @@ function isWin(role,result){
 	else
 		return false;
 }
+
+function changeIsCountConstr()
+{
+    isCountConstr = !isCountConstr;
+}
+
 
 function sliderUpdate(current, total, stage) {
 	var Stage = document.getElementById("Stage");  
