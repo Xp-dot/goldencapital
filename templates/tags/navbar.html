@@ -33,8 +33,12 @@
                     <li class="dropdown-item"><a href="{% url 'gifts_calc'%}">Квадрогенератор 2.0</a></li>
                 </ul>
             </li>
-            <li class="nav-item">
-                <a class="nav-link text-warning" href="{% url 'tgc_solar' %}">Звездная система TGC</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-warning" id="dropdown2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Интерактив</a>
+                <ul class="dropdown-menu bg-dark" aria-labelledby="dropdown2">
+                    <li class="dropdown-item"><a href="{% url 'tgc_solar' %}">Звездная система TGC</a></li>
+                    <li class="dropdown-item"><a href="{% url 'secret' %}">Секретная вкладка</a></li>
+                </ul>
             </li>
         </ul>
     </div>

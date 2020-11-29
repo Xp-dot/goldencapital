@@ -15,5 +15,6 @@ urlpatterns = [
     path('log_calc/', views.log_calc, name="log_calc"),
     path('gifts_calc/', views.gifts_calc, name="gifts_calc"),
     path('tgc_solar/', views.tgc_solar, name="tgc_solar"),
+    path('secret/', views.secret, name="secret"),
     path('article/<article_id>', views.show_article, name='article'),
 ]

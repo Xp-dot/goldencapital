@@ -24,6 +24,9 @@ def show_article(request, article_id):
     article = get_object_or_404(Article, id=article_id)
     return render(request, 'landing/article.html', {'article': article})
 
+def secret(request):
+    return render(request, "landing/secret.html", locals())
+
 def history(request):
     return render(request, "landing/history.html", locals())
 
