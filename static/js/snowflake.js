@@ -18,6 +18,16 @@ var flakes = [],
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
+let r = RandomColorInRange(180, 255);
+let g = RandomColorInRange(150, 185);
+let b = RandomColorInRange(0, 50);
+
+function RandomColorInRange(min, max)
+{
+    var random = Math.random() * (+max - +min) + +min;
+    return random;
+}
+
 function snow() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -50,7 +60,7 @@ function snow() {
             flake.velX += Math.cos(flake.step += .05) * flake.stepSize;
         }
 
-        ctx.fillStyle = "rgba(249,166,2," + flake.opacity + ")";
+        ctx.fillStyle = "rgba("+ r+ ","+g+","+ b +"," + flake.opacity + ")";
         flake.y += flake.velY;
         flake.x += flake.velX;
 

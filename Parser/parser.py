@@ -1,7 +1,7 @@
 import requests
 import random
 import json
-from Parser import proxies
+import proxies
 
 ip_addresses = proxies.ip_addresses
 proxy = None

@@ -20,6 +20,9 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <!-- Concurs tooltip -->
 <script type="text/javascript" src="{% static 'js/show_tooltip.js' %}"></script>
+
+<!-- Snowflakes -->
+<link rel="stylesheet" type="text/css" href="{% static 'css/snowflakes.css' %}">
 {% block scripts %}{% endblock %}
 
 <body>
@@ -76,7 +79,10 @@
             </div>
         </div>
 
+
+
     </div>
+
     <div class="col-sm-6">
         <div class="card bg-dark border-warning mx-auto mb-3" style="width: 80%;">
         <header><h1 class="capital_letter">{% block title %}{% endblock %}</h1></header>
@@ -108,7 +114,7 @@
         <div class="card bg-dark border-warning mx-auto mb-3" style="width: 80%;">
             <h1 class="capital_letter">Мы на карте</h1>
             <div>
-            <script type="text/javascript" src="//rf.revolvermaps.com/0/0/6.js?i=56andngex83&amp;m=7&amp;c=e63100&amp;cr1=ffffff&amp;f=arial&amp;l=0&amp;bv=90&amp;lx=-420&amp;ly=420&amp;hi=20&amp;he=7&amp;hc=a8ddff&amp;rs=80" async="async"></script>
+            <script type="text/javascript" src="//rf.revolvermaps.com/0/0/8.js?i=56andngex83&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;f=arial&amp;l=33" async="async"></script>
             </div>
         </div >
 
@@ -117,6 +123,9 @@
     </div>
 </div>
 
+<!-- Snowflakes -->
+<canvas id="snowflakes"> </canvas>
+<script type="text/javascript" src="{% static 'js/snowflake.js' %}"></script>
 
 <!-- Footer -->
 <footer>
