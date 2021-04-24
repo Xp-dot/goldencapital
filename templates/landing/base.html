@@ -21,8 +21,9 @@
 <!-- Concurs tooltip -->
 <script type="text/javascript" src="{% static 'js/show_tooltip.js' %}"></script>
 
-<!-- Snowflakes -->
+<!-- Snowflakes
 <link rel="stylesheet" type="text/css" href="{% static 'css/snowflakes.css' %}">
+-->
 {% block scripts %}{% endblock %}
 
 <body>
@@ -54,17 +55,27 @@
 </header>
 <div class="row">
     <div class="col-sm-3">
+        <!-- Рейтинг игроков
         <div class="card bg-dark mx-auto border-warning" style="width: 80%;">
             <div class="card-header border-warning">
                 <h1 class="capital_letter">Рейтинг лучших игроков клана</h1>
             </div>
-            {% show_mafstats %}
+            {# % show_mafstats % #}   < Рейтинг игроков, чтобы вернуть - нужно просто убрать # >
         </div>
 
             <div>
                 <p>powered by <a href="https://mafiastat.ru/" target="_blank">MafiaStat</a></p>
             </div>
         <br>
+        -->
+        <div class="card bg-dark border-warning mx-auto mb-3" style="width: 80%;">
+            <header >
+                <h1 class="capital_letter" >Актуальные события</h1>
+            </header>
+        </div>
+        <div id="news_parent">
+            {% show_actual_news %}
+        </div>
         <div class="card bg-dark border-warning mx-auto" style="width: 80%;">
             <div class="card-header border-warning">
                 <h1 class="capital_letter">Полезные ссылки</h1>
@@ -101,14 +112,6 @@
                 <img src="https://st.mafiaonline.ru/images/mafia_banners/banner_najdi_menja_na_mafijaonline.gif" class="img-thumbnail" alt="Мафия онлайн" title="Мафия онлайн">
             </a>
         </div>
-        <div class="card bg-dark border-warning mx-auto mb-3" style="width: 80%;">
-            <header >
-                <h1 class="capital_letter" >Актуальные события</h1>
-            </header>
-        </div>
-        <div id="news_parent">
-            {% show_actual_news %}
-        </div>
             {% show_forum_last %}
         <br>
         <div class="card bg-dark border-warning mx-auto mb-3" style="width: 80%;">
@@ -123,9 +126,10 @@
     </div>
 </div>
 
-<!-- Snowflakes -->
+<!-- Snowflakes
 <canvas id="snowflakes"> </canvas>
 <script type="text/javascript" src="{% static 'js/snowflake.js' %}"></script>
+ -->
 
 <!-- Footer -->
 <footer>

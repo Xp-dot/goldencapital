@@ -1,7 +1,7 @@
 import json
-from Parser import parser
+import parser
 import os
-from Parser import parser_urls
+import parser_urls
 
 base_image_url = 'https://st.mafiaonline.ru/images/gifts/'
 json_load_url = 'https://www.mafiaonline.ru/api/api.php?action=gifts&param=gifts'
@@ -10,17 +10,21 @@ json_categories_load_url = 'https://www.mafiaonline.ru/api/api.php?action=gifts&
 
 def save_image(base_url, path, filename, file_extention):
     url = base_url + filename + file_extention
-    r = parser.get_url(url)
-    if r.status_code == 200:
-        print('Картинка загружена, сохраняем... ')
-        if not os.path.exists(path):
-            print('path ' + path + ' doesnt exist. Creating new one...')
-            os.makedirs(path)
-        with open(path + filename + file_extention, "wb") as f:
-            f.write(r.content)
-            print('Сохранение прошло успешно!')
+    full_file_path = path + filename + file_extention
+    if not os.path.exists(full_file_path):
+        r = parser.get_url(url)
+        if r.status_code == 200:
+            print('Картинка загружена, сохраняем... ')
+            if not os.path.exists(path):
+                print('path ' + path + ' doesnt exist. Creating new one...')
+                os.makedirs(path)
+            with open(full_file_path, "wb") as f:
+                f.write(r.content)
+                print('Сохранение прошло успешно!')
+        else:
+            print('Не удалось загрузить картинку по ссылке ' + url)
     else:
-        print('Не удалось загрузить картинку по ссылке ' + url)
+        print("Файл уже существует")
 
 def read_all_gifts(path):
     with open(path, 'r', encoding='utf8') as f:
