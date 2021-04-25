@@ -32,11 +32,11 @@ async function calculate()
 //Download data from API_URL into varibles
 async function get_players_postcards_info()
 {
-    sliderUpdate(1, 3, "Получаю данные с сервера мафии 0/3.");
+    sliderUpdate(0, 3, "Получаю данные с сервера мафии 0/3.");
     let data = await (await fetch(API_url)).json();
-    sliderUpdate(2, 3, "Получаю данные с сервера мафии 1/3.");
+    sliderUpdate(1, 3, "Получаю данные с сервера мафии 1/3.");
     gifts_json_data = await (await fetch(gifts_json_url)).json();
-    sliderUpdate(1, 3, "Получаю данные с сервера мафии 2/3.");
+    sliderUpdate(2, 3, "Получаю данные с сервера мафии 2/3.");
     users_json_data = await (await fetch(users_json_url)).json();
     let gifts = data.gifts;
     return gifts;
