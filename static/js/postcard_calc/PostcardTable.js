@@ -72,20 +72,6 @@ function display_table(postcards_arr)
 			}
 		}
     } );
-    /*$('#checkboxContainer').show();
-	$('input.custom-control-input').on( 'click', function (e) {
-        //e.preventDefault();
-
-        // Get the column API object
-        var column = table.column( $(this).attr('data-column') );
-
-        // Toggle the visibility
-        column.visible( ! column.visible() );
-		$(this).attr("checked", column.visible());
-    } );
-	$('#sortableTable thead tr:eq(1) th').each( function (i) {
-		table.column(i).visible( $('#Inline'+i).attr("checked") == 'checked');
-	 });*/
 } );
 }
 function createHeader(row)
@@ -93,6 +79,7 @@ function createHeader(row)
 	row.insertCell().outerHTML = "<th>Ник</th>";
 	row.insertCell().outerHTML = "<th>Дата</th>";
 	row.insertCell().outerHTML = "<th>ID игрока</th>";
+	row.insertCell().outerHTML = "<th>Номер в инфе</th>";
 	row.insertCell().outerHTML = "<th>ID подарка</th>";
 	row.insertCell().outerHTML = "<th>Подпись</th>";
 }
