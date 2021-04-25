@@ -50,8 +50,9 @@ async function count_gifts_per_player(gifts, total)
         let img_url = get_gift_url_by_id(gift.gid);
         let current_nick = users_json_data[gift.from_id];
         let sender_nick = gift.from;
-        let output_nick = (current_nick == sender_nick) ? current_nick : (sender_nick + " (" + current_nick + ")");
-        let nick_url = '<a href="https://www.mafiaonline.ru/info/'+ current_nick+'" target="_blank">'+ output_nick +'</a>';
+        let output_nick = (current_nick == sender_nick) ? sender_nick : (sender_nick + " (" + current_nick + ")");
+        let url_nick = (current_nick == "undefined") ? sender_nick : current_nick;
+        let nick_url = '<a href="https://www.mafiaonline.ru/info/'+ url_nick + '" target="_blank">'+ output_nick +'</a>';
         gifts_arr.push([nick_url, gift.date, gift.from_id, index, img_url, gift.text]);
 
         if(gift.from in gifts_dict)
