@@ -53,7 +53,7 @@
             "id": 21,
             "name": "К праздникам",
             "parent": null,
-            "active": true
+            "active": false
         },
         {
             "id": 23,
@@ -98,6 +98,12 @@
             "active": true
         },
         {
+            "id": 140,
+            "name": "Фоны",
+            "parent": null,
+            "active": true
+        },
+        {
             "id": 2,
             "name": "Женский день",
             "parent": 21,
@@ -107,7 +113,7 @@
             "id": 10,
             "name": "Новый год",
             "parent": 21,
-            "active": true
+            "active": false
         },
         {
             "id": 11,
@@ -164,7 +170,7 @@
             "active": true
         },
         {
-            "id": 0,
+            "id": 1,
             "name": "Разное",
             "parent": 104,
             "active": true
