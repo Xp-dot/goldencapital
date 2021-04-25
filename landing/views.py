@@ -58,6 +58,9 @@ def stats_calc(request):
 def log_calc(request):
     return render(request, "Calcs/log_calc.html", locals())
 
+def postcard_calc(request):
+    return render(request, "Calcs/postcard_calc.html", locals())
+
 def gifts_calc(request):
     categories = Gifts_html_builder.get_all_sections_list()
     photos = {}

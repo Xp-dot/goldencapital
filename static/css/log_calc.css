@@ -5,6 +5,10 @@
  	margin:5px 100px 5px 100px;
 }
 
+.bg-secondary
+{
+	background-color: #e6d8ad19 !important;
+}
 
 /* MOBILE CSS HERE*/
 @media (max-width: 768px) {

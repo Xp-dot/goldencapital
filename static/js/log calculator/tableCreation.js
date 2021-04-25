@@ -3,6 +3,7 @@ function display_table()
 	var table = document.createElement("table");
 	table.setAttribute("class", "table table-dark w-auto");
 	table.setAttribute("id", "sortableTable");
+	console.log(PlayerStatsArray);
 	for(var rw of PlayerStatsArray)
 	{
 		var row = table.insertRow();
