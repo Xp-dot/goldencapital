@@ -26,13 +26,17 @@ async function calculate()
     let graph_data = get_graph_data(sorted_gifts_dict);
     drawGraph(graph_data[0], graph_data[1], total_gifts);
     display_table(gifts_arr);
+    sliderUpdate(100, 100, "Мишен аккомплишед май дженерале!");
 }
 
 //Download data from API_URL into varibles
 async function get_players_postcards_info()
 {
+    sliderUpdate(1, 3, "Получаю данные с сервера мафии 0/3.");
     let data = await (await fetch(API_url)).json();
+    sliderUpdate(2, 3, "Получаю данные с сервера мафии 1/3.");
     gifts_json_data = await (await fetch(gifts_json_url)).json();
+    sliderUpdate(1, 3, "Получаю данные с сервера мафии 2/3.");
     users_json_data = await (await fetch(users_json_url)).json();
     let gifts = data.gifts;
     return gifts;
@@ -46,12 +50,14 @@ async function count_gifts_per_player(gifts, total)
     let index = total+1;
     for(let gift of gifts)
     {
+        let current_stage = total-index;
+        sliderUpdate(current_stage, total, "Обработано " + current_stage + "/" + total + " открыток.");
         index--;
         let img_url = get_gift_url_by_id(gift.gid);
         let current_nick = users_json_data[gift.from_id];
         let sender_nick = gift.from;
         let output_nick = (current_nick == sender_nick) ? sender_nick : (sender_nick + " (" + current_nick + ")");
-        let url_nick = (current_nick) ? sender_nick : current_nick;
+        let url_nick = (current_nick == null) ? sender_nick : current_nick;
         let nick_url = '<a href="https://www.mafiaonline.ru/info/'+ url_nick + '" target="_blank">'+ output_nick +'</a>';
         gifts_arr.push([nick_url, gift.date, gift.from_id, index, img_url, gift.text]);
 
@@ -70,6 +76,7 @@ async function sort_data(gifts, cutoff_index)
     items.sort(function(first, second) {return second[1] - first[1];});
     let sorted_data = items.slice(0, cutoff_index);sorted_obj={}
     sorted_obj={};
+    sliderUpdate(2, 3, "Выполняю сортировку по к-ву открыток.");
     $.each(sorted_data, function(k, v) {
         use_key = v[0]
         use_value = v[1]
@@ -81,6 +88,7 @@ async function sort_data(gifts, cutoff_index)
 // Convert dictionary data to required charts.js format and
 function get_graph_data(gifts)
 {
+    sliderUpdate(95, 100, "Подготавливаю данные к визуализации.");
     let label_names = [];
     let dataset_array = [];
     for (const [key, value] of Object.entries(gifts))
@@ -88,6 +96,7 @@ function get_graph_data(gifts)
         label_names.push(key);
         dataset_array.push(value);
     }
+    sliderUpdate(98, 100, "Упаковываю лоста в тессеракт.");
     return [label_names, dataset_array]
 }
 
@@ -106,4 +115,20 @@ function get_gift_url_by_id(id)
     {
     }
     return output;
+}
+
+function sliderUpdate(current, total, stage) {
+	var elem = document.getElementById("myBar");
+	var Stage = document.getElementById("Stage");
+	var width = 1;
+	frame();
+	function frame() {
+		width = (current)/(total)*100;
+		if(width>=100)
+			Stage.innerHTML = "Выполнено!";
+		else
+			Stage.innerHTML = stage;
+		elem.style.width = width + '%';
+		elem.innerHTML = width.toFixed(2) + '%';
+  }
 }
