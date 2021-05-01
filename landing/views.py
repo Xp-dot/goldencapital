@@ -73,3 +73,6 @@ def gifts_calc(request):
     if selected_item:
         photos = Gifts_html_builder.get_all_photos_by_category_id(selected_item)
     return render(request, "Calcs/Gifts_calc.html", {'categories' : categories, 'photos' : photos, 'select_val' : selected_item})
+
+def bunker5(request, template_name):
+    return render(request, "Bunker_history/Bunker5/"+template_name, locals())

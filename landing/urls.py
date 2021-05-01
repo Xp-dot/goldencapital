@@ -18,4 +18,8 @@ urlpatterns = [
     path('tgc_solar/', views.tgc_solar, name="tgc_solar"),
     path('secret/', views.secret, name="secret"),
     path('article/<article_id>', views.show_article, name='article'),
+    path('bunker5/', views.bunker5, {'template_name': "messages.html"}, name="bunker5"),
+    path('bunker5/messages.html', views.bunker5, {'template_name': "messages.html"}, name="bunker5"),
+    path('bunker5/messages2.html', views.bunker5, {'template_name': "messages2.html"}, name="bunker5_2"),
+    path('bunker5/messages3.html', views.bunker5, {'template_name': "messages3.html"}, name="bunker5_3"),
 ]
