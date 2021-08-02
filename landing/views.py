@@ -75,4 +75,7 @@ def gifts_calc(request):
     return render(request, "Calcs/Gifts_calc.html", {'categories' : categories, 'photos' : photos, 'select_val' : selected_item})
 
 def bunker5(request, template_name):
-    return render(request, "Bunker_history/Bunker5/"+template_name, locals())
+    if request.GET['password'] == 'gY3scDez4kt5BQZk':
+        return render(request, "Bunker_history/Bunker5/"+template_name, locals())
+    else:
+        return render(request, "landing/history.html", locals())
